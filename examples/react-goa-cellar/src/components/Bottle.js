@@ -6,8 +6,7 @@ class Bottle extends Component{
 	}
   
 	static propTypes = {
-		bottle: PropTypes.object.isRequired,
-		reduxMountPoint: PropTypes.string.isRequired
+		bottle: PropTypes.object.isRequired
 	};
 	
 	render() {

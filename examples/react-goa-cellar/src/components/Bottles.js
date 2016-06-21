@@ -9,7 +9,7 @@ class Bottles extends Component{
 	}
   
 	static propTypes = {
-		data: PropTypes.object.isRequired,
+		data: PropTypes.array.isRequired,
     dispatch: PropTypes.func
 	};
   
