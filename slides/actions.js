@@ -1,25 +1,26 @@
 //START OMIT
-import * as types from './actionTypes';
-import axios from 'axios';
-const requestBottleData = () => ({
-  type: types.REQ_BOTTLE_DATA
-});
-const receiveBottleData = (json) => ({
-  type: types.RECV_BOTTLE_DATA, data: json
-});
-const receiveBottleError = (json) => ({
-  type: types.RECV_BOTTLE_ERROR, data: json
-});
-export const fetchBottleData = (url) => {
+// List all bottles in account optionally filtering by year
+// path is the request path, the format is "/cellar/accounts/:accountID/bottles"
+// years is used to build the request query string.
+// This function returns a promise which dispatches an error if the HTTP response is a 4xx or 5xx.
+export const listBottles = (path, years) => {
   return (dispatch) => {
-      dispatch(requestBottleData());
-      return axios({url: url, timeout: 20000, method: 'get', responseType: 'json'})
-        .then((response) => {
-	        dispatch(receiveBottleData(response.data));
-	      })
-        .catch((response) => {
-	        dispatch(receiveBottleError(response.data));
-	      });
-    };
+    dispatch(actions.requestListBottles());
+    return axios({
+      timeout: 20000,
+      url: 'http://cellar.goa.design' + path,
+      method: 'get',
+      params: {
+        years: years
+      },
+      responseType: 'json'
+    })
+      .then((response) => {
+        dispatch(actions.receiveListBottlesSuccess(response.data, response.status));
+      })
+      .catch((response) => {
+        dispatch(actions.receiveListBottlesError(response.data, response.status));
+      });
+  };
 };
 //END OMIT

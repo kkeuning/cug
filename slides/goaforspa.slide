@@ -1,5 +1,6 @@
-Chicago Ultimate Go Meetup
-17 May 2016
+Goa for Microservices and SPAs
+Chicago Ultimate Golang Meetup
+21 May 2016
 Tags: go golang generate goa react redux
 
 Kevin Keuning
@@ -7,18 +8,18 @@ Goapher
 kkeuning@gmail.com
 https://github.com/kkeuning
 @keuning
- 
+
 * Qualifications To Speak / My Experience So Far
- 
+
 .image ./gatt.jpg _ 200
- 
+
 - Working with goa daily since January 2016
 - In production with goa + React SPA
-- Frequent visitor and occasional contributor to #goa channel on gophers slack 
+- Working on a goa plug-in to generate javasccript Redux boilerplate (Reduxa)
+- Frequent visitor and occasional contributor to #goa channel on gophers slack
 - Thanks to Brian Ketelsen for introducing me to goa at just the right time
 - Special thanks to "The Godfather" Raphael Simon for creating goa and helping me multiple late nights
-- goa has a small but amazing community.  Help is available.  
- 
+
 * My Stack & Experience
 .image ./react-logo.png _ 125
 .image ./goa-logo@2x.png _ 100
@@ -29,14 +30,11 @@ https://github.com/kkeuning
 - Docker + Rancher
 
 * Agenda for the session
-- Introduction to goa 
+- Introduction to goa
 - Introduction to gorma
 - 5 minute overview of React & Redux (questions welcome)
-- Demo working example of goa & gorma with a React & Redux SPA 
-
-Time permitting:
-- Deeper dive into JWT for securing the API and SPA
-- Load testing with vegeta
+- Extending Goa to generate front-end code (Reduxa)
+- Demo working example of goa with a React & Redux SPA
 
 All source for the session is in github:
 .link https://github.com/kkeuning/goa-react
@@ -45,11 +43,11 @@ All source for the session is in github:
 
 - gRPC https://github.com/grpc/grpc-go
 - gen https://clipperhouse.github.io/gen/
-- Goal https://colegion.github.io/goal/ 
+- Goal https://colegion.github.io/goal/
 - Reform https://github.com/AlekSi/reform/
 - dozens more
 
-Why?  
+Why?
 
 Go has powerful text templates built into the *standard* *library*.
 
@@ -67,7 +65,7 @@ The goa framework can be divided into three parts:
 
 * Design First
 
-goa uses Go code as its input.  This Go code is written using a DSL that makes your design process simple and clear.  Nested functions allow for a nice DSL in pure Go. 
+goa uses Go code as its input.  This Go code is written using a DSL that makes your design process simple and clear.  Nested functions allow for a nice DSL in pure Go.
 
 .code design/adderdesign.go /START OMIT/,/END OMIT/
 Yes, those are dot imports!  Optional in design files, not used in application code.
@@ -90,7 +88,7 @@ Design code should have the following parts:
 - Resource definition
 - Media Type definition
 - User Type definition (Payloads for create/update methods)
-- Security definition 
+- Security definition
 
 * API Definition
 
@@ -145,19 +143,19 @@ Routing requests to controllers
 - /client  = Go client package and CLI for your API
 - main.go  = wire it all together
 - {controller.go} = stubbed controllers for all your resources
-- Full swagger definition.  Use swagger-api or your favorite swagger service. 
+- Full swagger definition.  Use swagger-api or your favorite swagger service.
 - Fully functioning app - just add business logic in the controllers
 
 * Swagger Documentation
 .image ./swagger.png _ 900
 
 Experience it live:
-.link http://swagger.goa.design 
+.link http://swagger.goa.design
 
 
 * Gorma
 
-Contributed by Brian Ketelsen (GopherCon, Gopher Academy, Go Time...) 
+Contributed by Brian Ketelsen (GopherCon, Gopher Academy, Go Time...)
 
 Using the same style as `goa`, add some model definitions to your design package.
 
@@ -188,75 +186,92 @@ http://goa.design/extend/gorma.html
 
 * My Workflow
 
-- Initial API Design (Take your time to plan it, look at examples.) 
-- `goagen` with `bootstrap` 
+- Initial API Design (Take your time to plan it, look at examples.)
+- `goagen` with `bootstrap`
 - `goagen gen --pkg-path=github.com/goadesign/gorma`
 - Review generated swagger documentation of my API (I use bootprint for this)
 - Add a bit of code to the controllers and main
 - Create a database for gorma
 - `go build` and run your API server
 
-Changes required?  Update Design & GATT: 
+Changes required?  Update Design & GATT:
 
 - `goagen` again {app, js, swagger, schema, client, main, gorma}
 - bootstrap and main won't overwrite your main.go and controllers
 - Tip: I use `goagen main -o _scaffolds` to see that generated main and controllers
 
+* Security
+- Comprehensive Security DSL
+   BasicAuthSecurity, APIKeySecurity, JWTSecurity, OAuth2Security, NoSecurity
+
+- JWT Middleware Built In
+  1. Validates the "Bearer" token present in the "Authorization" header against your key(s)
+  2. Supports scopes in the DSL for granular security
+  3. If scopes are defined in the design, will validate them per action
+  4. Can be extended as middleware or in controllers to validate additional claims
+  5. Works well with github.com/dgrijalva/jwt-go to create tokens
+
+- Just use the DSL to add security to your resources:
+  Security(JWT, func() { // Use JWT to auth requests to this endpoint
+    Scope("api:access") // Enforce presence of "api" scope in JWT claims.
+  })
+.link https://auth0.com/blog/2014/12/02/using-json-web-tokens-as-api-keys/
 * What else?
 
 - Websockets support
-- Middleware 
+- Middleware
 	JWT, LogRequest, LogResponse, RequestID,
 	Recover, Timeout, RequireHeader,
 	CORS, gzip
-- Pluggable loggers, use log15, logrus, anything else with tiny adapter.  Structured Log for Everyone!
+- Pluggable loggers, use log15, logrus, anything else.
 - Pluggable metrics collection - Prometheus, StatsD, more
 
 * Where can I learn more?
-- The documentation and website are getting really good:
+- The documentation and website are very detailed:
 .link http://goa.design
 - Be aware of what's available across the repositories: goa, examples, goa-cellar, gorma-cellar.  Also the gopheracademy/congo repo is a nice example of goa in action.
 .link https://github.com/goadesign
 .link https://github.com/gopheracademy/congo
 - Brian Ketelsen's goa + gorma talk to the Tampa Go Meetup, watch it on YouTube.  This talk is inspired and based on Brian's content.
 .link https://www.youtube.com/watch?v=tCFrgWikEX8
+- goa has a small but amazing community.  Help is available on gophers slack at #goa.
 
 * What's Next With Goa?
 - Raphael Simon "The Godfather of goa" speaking at *GopherCon* *2016*
-- Brian Ketelsen speaking at *Abstractions.io* in Pittsburgh (August 18-20) 
+- Brian Ketelsen speaking at *Abstractions.io* in Pittsburgh (August 18-20)
 - *Go* *time* podcast with Raphael Simon
 - 1.0 *soon*
 - Still lots of opportunity for contributors
 
 * The Single Page Application (SPA)
 *Client* *Side*
-I am using React, but there are fantastic Go options emerging.  GopherJS looks pretty exciting combined with Polymer or Vecty.
+I am using React, but there are fantastic Go options emerging.  GopherJS looks exciting combined with Polymer or Vecty.
 
-React, Ember, and Angular (AngularJS or Angular 2.0) seem most popular for SPAs this year, but there is lots of interest in alternatives like Elm, Vue.js, Cycle.js also.    
-
-Universal Javascript (née Isomorphic) is supported well by React, and its possible to render server side React using Go servers (go-duktape), but not common yet.
+Universal Javascript (Isomorphic) is supported well by React, and its possible to render server side React using Go servers (go-duktape), but not common yet.
 
 *Server* *Side*
-Single Page Apps almost always need an API server.  Popular options use Rails API, Elixir Phoenix, Node.js, or Go. 
+Single Page Apps almost always need an API server.  Popular options are Rails, Elixir Phoenix, Node.js, or Go.
 
-This is a sweet spot for goa + gorma.  And it might be the best kept secret in Open Source Software. 
+This is a sweet spot for goa + gorma.  The design + generate workflow enables extremely rapid development of APIs.
+
 
 * React + Redux Single Page Application
-Facebook's React has been widely adopted over the past 2 years and brings some simplicity to the front end.  
+Facebook's React has been widely adopted over the past 2 years and brings some simplicity to the front end.
 
-The performance of React's virtual DOM implementation is a key enabler, changes assumptions about rendering. 
+The performance of React's virtual DOM implementation is a key enabler, changes assumptions about rendering.
 
 React handles the view layer with *components* and one-way data flow.
 
-JSX is polarizing, but combining html with modern Javascript (ES6/ES2015) its a productive alternative to "unobtrusive javascript."
+JSX is polarizing, but combining html with modern Javascript (ES6/ES2015) can be very productive.
 
 React is theoretically "just the view," but in practice its more.  After you add react-router, axios, and a state container (redux), not much is missing that you would find in a "full" framework.
 
-Dan Abramov's Redux has evolved Facebook's Flux pattern to something more accessible, bringing many functional concepts from Elm into to Javascript.
 
 * What is Redux?
 
-Redux introduces a single, read-only tree structure (like the DOM, but simpler) to manage state in the browser.
+Dan Abramov's Redux has evolved Facebook's Flux pattern to something more accessible, bringing many functional concepts from Elm into to Javascript.
+
+Redux introduces a single, read-only tree structure to manage state in the browser.
 
 The entire state of the application will be represented by one JavaScript object.*
 .caption *Ok, maybe not the entire state, but all of the state you care enough about to manage in the Redux store.
@@ -265,17 +280,16 @@ All changes and mutations to the application are explicit.  State can only be ch
 
 Redux is most popular with React, but works very well with Angular 2.0 also and can be used with other frameworks.
 
-Asynchronous actions can be dispatched to update the client state with data from an API.  The Axios promise based http client and Redux thunk middleware work nicely together to make it happen. 
+Asynchronous actions can be dispatched to update the client state with data from an API.  The Axios promise based http client and Redux thunk middleware work nicely together to make it happen.
 
 
-* Redux and APIs:  Thunks, and Dispatching Actions from Promises
+* Reduxa: Generate your Redux boilerplate from Goa
 .code ./actions.js /START OMIT/,/END OMIT/
 
-* Lets look at some code...
+* Lets look at some live code...
+- Working example of React + Redux + Reduxa as front end to goa-cellar
 - goa adder example
 - gorma-cellar example (extension of goa-cellar)
-- react-redux axios example, as front end to gorma-cellar
-- extending the gorma-cellar example with JWT security 
+- extending the gorma-cellar example with JWT security
 - using JWT security with the generated goa client
 - `vegeta` load testing our controllers
-
