@@ -1,4 +1,4 @@
-build:
+build-race:
 	@echo "building with race detection"; \
 	go build -race
 
@@ -10,7 +10,6 @@ clean:
 
 lint:
 	golint
-	golint controllers
 
 test:
 
