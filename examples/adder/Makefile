@@ -19,9 +19,11 @@ prep:
 	GOPATH=$(GOPATH) go get -u github.com/kardianos/govendor
 
 gen-main:
-	@if [ -a _scaffolds ]; then rm _scaffolds/*; fi;
-	goagen main -d github.com/kkeuning/goa-react/examples/adder/design -o _scaffolds
+	goagen main -d github.com/kkeuning/goa-react/examples/adder/design 
 	
+gen-bootstrap:
+	goagen bootstrap -d github.com/kkeuning/goa-react/examples/adder/design 
+
 gen:
 	goagen app -d github.com/kkeuning/goa-react/examples/adder/design
 	@if [ -a _scaffolds ]; then rm _scaffolds/*; fi;
