@@ -1,3 +1,7 @@
+Slides for Ultimate Go Meetup, October 18:
+
+http://go-talks.appspot.com/github.com/kkeuning/goa-react/slides/justgenerate.slide
+
 # Introduction to Goa for Microservices and SPAs
 ```
 go get github.com/kkeuning/goa-react
