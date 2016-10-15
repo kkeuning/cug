@@ -31,5 +31,14 @@ var _ = Resource("operands", func() {
 		})
 		Response(OK, "plain/text")
 	})
+	Action("multiply", func() {
+		Routing(GET("multiply/:left/:right"))
+		Description("add returns the product of the left and right parameters in the response body")
+		Params(func() {
+			Param("left", Integer, "Left operand")
+			Param("right", Integer, "Right operand")
+		})
+		Response(OK, "plain/text")
+	})
 
 })

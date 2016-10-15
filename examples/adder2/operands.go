@@ -4,8 +4,8 @@ package main
 import (
 	"strconv"
 
-	"github.com/kkeuning/goa-react/examples/adder2/app"
 	"github.com/goadesign/goa"
+	"github.com/kkeuning/goa-react/examples/adder2/app"
 )
 
 // OperandsController implements the operands resource.
@@ -23,8 +23,15 @@ func (c *OperandsController) Add(ctx *app.AddOperandsContext) error {
 	ctx.OK([]byte(strconv.Itoa(ctx.Left + ctx.Right)))
 	return nil
 }
+
 // Subtract runs the subtract action.
 func (c *OperandsController) Subtract(ctx *app.SubtractOperandsContext) error {
 	ctx.OK([]byte(strconv.Itoa(ctx.Left - ctx.Right)))
+	return nil
+}
+
+// Multiply runs the multiply action.
+func (c *OperandsController) Multiply(ctx *app.MultiplyOperandsContext) error {
+	ctx.OK([]byte(strconv.Itoa(ctx.Left * ctx.Right)))
 	return nil
 }
