@@ -1,10 +1,10 @@
 Slides for Ultimate Go Meetup, October 18:
 
-http://go-talks.appspot.com/github.com/kkeuning/goa-react/slides/gatt.slide
+http://go-talks.appspot.com/github.com/kkeuning/cug/slides/gatt.slide
 
 # Introduction to Goa for Microservices and SPAs
 ```
-go get github.com/kkeuning/goa-react
+go get github.com/kkeuning/cug
 ```
 
 ## Slides
@@ -15,7 +15,7 @@ go get golang.org/x/tools
 go install golang.org/x/tools/cmd/present
 ```
 ```
-cd $GOPATH/src/github.com/kkeuning/goa-react
+cd $GOPATH/src/github.com/kkeuning/cug
 $GOPATH/bin/present
 ```
 ## Examples

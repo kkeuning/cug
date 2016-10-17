@@ -34,7 +34,7 @@ https://github.com/kkeuning
 - Extending Goa to generate front-end code (Reduxa)
 
 All source for the session is in github:
-.link https://github.com/kkeuning/goa-react
+.link https://github.com/kkeuning/cug
 
 * Alternatives for Building APIs With Go
 - Standard library (typically with gorilla/mux or julienschmidt/httprouter)
