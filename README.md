@@ -1,6 +1,6 @@
 Slides for Ultimate Go Meetup, October 18:
 
-http://go-talks.appspot.com/github.com/kkeuning/goa-react/slides/justgenerate.slide
+http://go-talks.appspot.com/github.com/kkeuning/goa-react/slides/gatt.slide
 
 # Introduction to Goa for Microservices and SPAs
 ```
@@ -33,15 +33,33 @@ go get github.com/goadesign/examples
 go get github.com/goadesign/goa-cellar
 go get github.com/goadesign/gorma-cellar
 ```
+### Add my forks as remotes
+My fork of goa-cellar adds support for cors
+```
+cd $GOPATH/src/github.com/goadesign/goa-cellar
+git remote add kkeuning https://github.com/kkeuning/goa-cellar
+git remote update
+git checkout -t kkeuning/cors
+```
+My fork of gorma cellar adds several extras for the demo...
+```
+cd $GOPATH/src/github.com/goadesign/gorma-cellar
+git remote add kkeuning https://github.com/kkeuning/gorma-cellar
+git remote update
+git checkout -t kkeuning/chicago
+```
+If you have docker installed, build the container.
+```
+docker build -t gorma cellar .
+```
+
 ### Fire up the react example, and connect it to goa-cellar
 ```
 cd examples/react-goa-cellar
-npm i
-npm start
+docker-compose build
+docker-compose up
 ```
-Connect your browser to localhost:3000.
-
-By default will connnect to cellar.goa.design, modify src/index.js to connect to your local instance.
+Point your browser to 0.0.0.0/2015
 
 ### Extras
 Swagger UI:
