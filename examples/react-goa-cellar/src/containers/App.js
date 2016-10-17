@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import Spinner from '../components/Spinner';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import 'app.css';
+//import '../static/app.css';
 
 @connect(state => ({routerState: state.router, bottles: state.bottles }))
 class App extends Component {
@@ -18,6 +18,7 @@ class App extends Component {
 	};
 	
 	render() {
+		const styles = require('./app.css');
 		const {children} = this.props;
 		const {bottles} = this.props;
 
