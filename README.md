@@ -32,8 +32,9 @@ go get github.com/goadesign/goa
 go get github.com/goadesign/goa/goagen
 go get github.com/goadesign/gorma
 ```
-Check out the v1.0.0 of goa for best compatibility with my examples.
+Check out the v1.0.0 tag of goa for best compatibility with my examples.
 ```
+cd $GOPATH/src/github.com/goadesign/goa
 git checkout tags/v1.0.0
 ```
 
