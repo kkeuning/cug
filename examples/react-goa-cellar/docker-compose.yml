@@ -1,0 +1,23 @@
+client:
+  build: .
+  ports:
+    - "2015:2015"
+  command: /bin/bash -c "caddy"
+db:
+  image: postgres
+  environment:
+        POSTGRES_USER: gorma
+        POSTGRES_DB: gorma 
+        POSTGRES_PASSWORD: gorma 
+  ports:
+          - "5432:5432"
+app:
+  image: gorma-cellar
+  privileged: true
+  environment:
+        GORMA_CELLAR_DB_HOST: db
+  ports:
+    - "8081:8081"
+  command: /bin/bash -c "cd /go/src/github.com/goadesign/gorma-cellar && ./gorma-cellar"
+  links:
+    - db:db
