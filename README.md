@@ -1,4 +1,4 @@
-Slides for Ultimate Go Meetup, October 18:
+Slides for Chicago Ultimate Go Meetup, October 18:
 
 http://go-talks.appspot.com/github.com/kkeuning/cug/slides/gatt.slide
 
@@ -26,6 +26,10 @@ go get github.com/goadesign/goa
 go get github.com/goadesign/goa/goagen
 go get github.com/goadesign/gorma
 ```
+Check out the v1.0.0 of goa for best compatibility with my examples.
+```
+git checkout tags/v1.0.0
+```
 
 ### Next, install the goa examples
 ```
@@ -50,7 +54,7 @@ git checkout -t kkeuning/chicago
 ```
 If you have docker installed, build the container.
 ```
-docker build -t gorma cellar .
+docker build -t gorma-cellar .
 ```
 
 ### Fire up the react example, and connect it to goa-cellar
@@ -59,7 +63,18 @@ cd examples/react-goa-cellar
 docker-compose build
 docker-compose up
 ```
+
+### Seed your database
+```
+cd $GOPATH/src/github.com/gorma-cellar/seeder
+go build
+bash seeder.sh
+```
 Point your browser to 0.0.0.0/2015
+Click Bottles to connect to the api.  
+I suggest doing this with you browser developer tools open recording network activity.
+Also, the Chrome Redux devtools are nice and enabled for the example.
+
 
 ### Extras
 Swagger UI:
