@@ -6,7 +6,7 @@ import (
 	"github.com/goadesign/goa"
 	goaclient "github.com/goadesign/goa/client"
 	uuid "github.com/goadesign/goa/uuid"
-	"github.com/kkeuning/goa-react/examples/adder2/client"
+	"github.com/kkeuning/cug/examples/adder2/client"
 	"github.com/spf13/cobra"
 	"golang.org/x/net/context"
 	"log"

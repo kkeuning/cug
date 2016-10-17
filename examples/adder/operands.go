@@ -1,11 +1,11 @@
-//go:generate goagen bootstrap -d github.com/kkeuning/goa-react/examples/adder/design
+//go:generate goagen bootstrap -d github.com/kkeuning/cug/examples/adder/design
 package main
 
 import (
 	"strconv"
 
 	"github.com/goadesign/goa"
-	"github.com/kkeuning/goa-react/examples/adder/app"
+	"github.com/kkeuning/cug/examples/adder/app"
 )
 
 // OperandsController implements the operands resource.

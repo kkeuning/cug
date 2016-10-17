@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/goadesign/goa"
 	"github.com/goadesign/goa/goatest"
-	"github.com/kkeuning/goa-react/examples/adder2/app"
+	"github.com/kkeuning/cug/examples/adder2/app"
 	"golang.org/x/net/context"
 	"io"
 	"log"

@@ -19,18 +19,18 @@ prep:
 	GOPATH=$(GOPATH) go get -u github.com/kardianos/govendor
 
 gen-main:
-	goagen main -d github.com/kkeuning/goa-react/examples/adder2/design 
+	goagen main -d github.com/kkeuning/cug/examples/adder2/design 
 	
 gen-bootstrap:
-	goagen bootstrap -d github.com/kkeuning/goa-react/examples/adder2/design 
+	goagen bootstrap -d github.com/kkeuning/cug/examples/adder2/design 
 
 gen:
-	goagen app -d github.com/kkeuning/goa-react/examples/adder2/design
+	goagen app -d github.com/kkeuning/cug/examples/adder2/design
 	@if [ -a _scaffolds ]; then rm _scaffolds/*; fi;
-	goagen main -d github.com/kkeuning/goa-react/examples/adder2/design -o _scaffolds
-	goagen client -d github.com/kkeuning/goa-react/examples/adder2/design
-	goagen js -d github.com/kkeuning/goa-react/examples/adder2/design
-	goagen swagger -d github.com/kkeuning/goa-react/examples/adder2/design
-	goagen gen -d github.com/kkeuning/goa-react/examples/adder2/design --pkg-path=github.com/goadesign/gorma
+	goagen main -d github.com/kkeuning/cug/examples/adder2/design -o _scaffolds
+	goagen client -d github.com/kkeuning/cug/examples/adder2/design
+	goagen js -d github.com/kkeuning/cug/examples/adder2/design
+	goagen swagger -d github.com/kkeuning/cug/examples/adder2/design
+	goagen gen -d github.com/kkeuning/cug/examples/adder2/design --pkg-path=github.com/goadesign/gorma
 	bootprint openapi swagger/swagger.json api-doc
 

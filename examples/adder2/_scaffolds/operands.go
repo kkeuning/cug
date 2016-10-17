@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/goadesign/goa"
-	"github.com/kkeuning/goa-react/examples/adder2/_scaffolds/app"
+	"github.com/kkeuning/cug/examples/adder2/_scaffolds/app"
 )
 
 // OperandsController implements the operands resource.
