@@ -1,6 +1,6 @@
-Goa for Microservices and SPAs
+Go APIs: Just Generate Everything With Goa
 Chicago Ultimate Golang Meetup
-21 May 2016
+18 Oct 2016
 Tags: go golang generate goa react redux
 
 Kevin Keuning
@@ -17,8 +17,7 @@ https://github.com/kkeuning
 - In production with goa + React SPA
 - Working on a goa plug-in to generate javasccript Redux boilerplate (Reduxa)
 - Frequent visitor and occasional contributor to #goa channel on gophers slack
-- Thanks to Brian Ketelsen for introducing me to goa at just the right time
-- Special thanks to "The Godfather" Raphael Simon for creating goa and helping me multiple late nights
+- Huge thanks to Raphael Simon and Brian Ketelsen
 
 * My Stack & Experience
 .image ./react-logo.png _ 125
@@ -32,19 +31,41 @@ https://github.com/kkeuning
 * Agenda for the session
 - Introduction to goa
 - Introduction to gorma
-- 5 minute overview of React & Redux (questions welcome)
 - Extending Goa to generate front-end code (Reduxa)
-- Demo working example of goa with a React & Redux SPA
 
 All source for the session is in github:
 .link https://github.com/kkeuning/goa-react
 
+* Alternatives for Building APIs With Go
+- Standard library (typically with gorilla/mux or julienschmidt/httprouter)
+- Minimalist Go web frameworks (router++)
+	labstack/echo, goji/goji, gin-gonic/gin, etc.
+- Specialized / Opinionated API packages
+	manyminds/api2go for JSONAPI.org implementation
+	rs/rest-layer similar to Python's Eve
+- Goa: "Generate all the things"
+	API Design Language
+	Code Generator (goagen)
+	Runtime Framework (the goa package)
+	DSL and Code Generation Plug-ins
+
+* Code Generation
+- Popular approach: "I'll just use the standard library"
+- Alternative to consider: "Maybe I can just generate everything!"
+	Rapid development without relying on "magic"
+	Better standardization of code
+	Easier refactoring- I can generate again after changes
+	Use templates to generate structs, helper methods, etc.
+	Minimize reliance on reflection
+	Not just for APIs- Generate the client code, documentation, etc.
+
 * Code Generation Tools for Go
 
-- gRPC https://github.com/grpc/grpc-go
-- gen https://clipperhouse.github.io/gen/
-- Goal https://colegion.github.io/goal/
-- Reform https://github.com/AlekSi/reform/
+- *gRPC:*   	[[https://github.com/grpc/grpc-go]]
+- *Goa:*   	[[https://goa.design]]
+- *gen:*   	[[https://clipperhouse.github.io/gen/]]
+- *Goal:*   	[[https://colegion.github.io/goal/]]
+- *Reform:*   [[https://github.com/AlekSi/reform/]]
 - dozens more
 
 Why?
@@ -52,6 +73,7 @@ Why?
 Go has powerful text templates built into the *standard* *library*.
 
 Code generation provides a best of both worlds scenario, high productivity without reliance on reflection or adding language features.
+
 
 * goa - Design First, Then Win
 
@@ -92,17 +114,9 @@ Design code should have the following parts:
 
 * API Definition
 
-The basics of your API
-- Host information
-- License information
-- Base path
+The basics of your API: Host, License, Base path, etc.
 
 .code design/api_definition.go /START OMIT/,/END OMIT/
-
-
-* API Definition (cont)
-
-.code design/api_definition2.go /START OMIT/,/END OMIT/
 
 * Media Type Definition
 
@@ -161,16 +175,18 @@ Using the same style as `goa`, add some model definitions to your design package
 
 Gorma generates the an entire data storage package for your API.
 
-http://goa.design/extend/gorma.html
+.link http://goa.design/extend/gorma
 
 - Uses github.com/jinzhu/gorm as a lightweight ORM
-- Manages migrations
+- Totally optional plug-in to goa, fantastic example of the power of DSL and code generation plug-ins
+- Adds gorm options including migrations, soft delete, detailed sql logging
 - Can be used for full ORM operations, or just as a nice abstraction to allow you to swap databases
 - Use sqlite in dev, PostgreSQL in prod, same code!
 
 * Gorma Features
 
 - Understands `goa` media types, payloads, and views
+- Generates gorm model structs
 
 .code models/bottle.go /START OMIT/,/END OMIT/
 
@@ -183,6 +199,8 @@ http://goa.design/extend/gorma.html
 * Beautiful Helpers
 
 .code models/bottle_helper.go /START OMIT/,/END OMIT/
+
+- Converts from model structs to media type structs for responses
 
 * My Workflow
 
@@ -208,8 +226,6 @@ Changes required?  Update Design & GATT:
   1. Validates the "Bearer" token present in the "Authorization" header against your key(s)
   2. Supports scopes in the DSL for granular security
   3. If scopes are defined in the design, will validate them per action
-  4. Can be extended as middleware or in controllers to validate additional claims
-  5. Works well with github.com/dgrijalva/jwt-go to create tokens
 
 - Just use the DSL to add security to your resources:
   Security(JWT, func() { // Use JWT to auth requests to this endpoint
@@ -227,21 +243,17 @@ Changes required?  Update Design & GATT:
 - Pluggable metrics collection - Prometheus, StatsD, more
 
 * Where can I learn more?
-- The documentation and website are very detailed:
-.link http://goa.design
-- Be aware of what's available across the repositories: goa, examples, goa-cellar, gorma-cellar.  Also the gopheracademy/congo repo is a nice example of goa in action.
-.link https://github.com/goadesign
-.link https://github.com/gopheracademy/congo
-- Brian Ketelsen's goa + gorma talk to the Tampa Go Meetup, watch it on YouTube.  This talk is inspired and based on Brian's content.
-.link https://www.youtube.com/watch?v=tCFrgWikEX8
-- goa has a small but amazing community.  Help is available on gophers slack at #goa.
+- The documentation and website are very detailed: [[https://goa.design][https://goa.design]]
+- [[https://youtu.be/t1MxuSKVXPc][Raphael Simon's goa talk from GopherCon 2016.]]
 
-* What's Next With Goa?
-- Raphael Simon "The Godfather of goa" speaking at *GopherCon* *2016*
-- Brian Ketelsen speaking at *Abstractions.io* in Pittsburgh (August 18-20)
-- *Go* *time* podcast with Raphael Simon
-- 1.0 *soon*
-- Still lots of opportunity for contributors
+- [[https://www.youtube.com/watch?v=tCFrgWikEX8][Brian Ketelsen's talk from the Tampa Go Meetup (this talk is based on Brian's).]]
+
+- Be aware of what's available across the repositories: goa, examples, goa-cellar, gorma-cellar. [[https://github.com/goadesign][  https://github.com/goadesign]]
+
+- Gopher Academy blog post explaining Goa.
+.link https://blog.gopheracademy.com/advent-2015/goaUntanglingMicroservices
+- goa has a small but amazing community.  Help is available on gophers slack at #goa.
+.image gopher-bbq.png
 
 * The Single Page Application (SPA)
 *Client* *Side*
@@ -253,18 +265,6 @@ Universal Javascript (Isomorphic) is supported well by React, and its possible t
 Single Page Apps almost always need an API server.  Popular options are Rails, Elixir Phoenix, Node.js, or Go.
 
 This is a sweet spot for goa + gorma.  The design + generate workflow enables extremely rapid development of APIs.
-
-
-* React + Redux Single Page Application
-Facebook's React has been widely adopted over the past 2 years and brings some simplicity to the front end.
-
-The performance of React's virtual DOM implementation is a key enabler, changes assumptions about rendering.
-
-React handles the view layer with *components* and one-way data flow.
-
-JSX is polarizing, but combining html with modern Javascript (ES6/ES2015) can be very productive.
-
-React is theoretically "just the view," but in practice its more.  After you add react-router, axios, and a state container (redux), not much is missing that you would find in a "full" framework.
 
 
 * What is Redux?
@@ -290,6 +290,4 @@ Asynchronous actions can be dispatched to update the client state with data from
 - Working example of React + Redux + Reduxa as front end to goa-cellar
 - goa adder example
 - gorma-cellar example (extension of goa-cellar)
-- extending the gorma-cellar example with JWT security
-- using JWT security with the generated goa client
 - `vegeta` load testing our controllers
