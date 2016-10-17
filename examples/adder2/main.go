@@ -1,11 +1,11 @@
-//go:generate goagen bootstrap -d github.com/kkeuning/goa-react/examples/adder2/design
+//go:generate goagen bootstrap -d github.com/kkeuning/cug/examples/adder2/design
 
 package main
 
 import (
 	"github.com/goadesign/goa"
 	"github.com/goadesign/goa/middleware"
-	"github.com/kkeuning/goa-react/examples/adder2/app"
+	"github.com/kkeuning/cug/examples/adder2/app"
 )
 
 func main() {

@@ -3,8 +3,8 @@
 //
 // Generated with goagen v1.0.0, command line:
 // $ goagen
-// --design=github.com/kkeuning/goa-react/examples/adder2/design
-// --out=$(GOPATH)/src/github.com/kkeuning/goa-react/examples/adder2
+// --design=github.com/kkeuning/cug/examples/adder2/design
+// --out=$(GOPATH)/src/github.com/kkeuning/cug/examples/adder2
 // --version=v1.0.0
 //
 // The content of this file is auto-generated, DO NOT MODIFY
@@ -20,6 +20,6 @@ import "github.com/goadesign/goa"
 // Use --noexample to prevent this file from being generated.
 func MountController(service *goa.Service) {
 	// Serve static files under js
-	service.ServeFiles("/js/*filepath", "/kmk/goa/go/src/github.com/kkeuning/goa-react/examples/adder2/js")
+	service.ServeFiles("/js/*filepath", "/kmk/goa/go/src/github.com/kkeuning/cug/examples/adder2/js")
 	service.LogInfo("mount", "ctrl", "JS", "action", "ServeFiles", "route", "GET /js/*")
 }

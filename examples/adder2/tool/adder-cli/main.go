@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	goaclient "github.com/goadesign/goa/client"
-	"github.com/kkeuning/goa-react/examples/adder2/client"
-	"github.com/kkeuning/goa-react/examples/adder2/tool/cli"
+	"github.com/kkeuning/cug/examples/adder2/client"
+	"github.com/kkeuning/cug/examples/adder2/tool/cli"
 	"github.com/spf13/cobra"
 	"net/http"
 	"os"
