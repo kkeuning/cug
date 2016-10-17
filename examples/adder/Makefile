@@ -7,6 +7,8 @@ clean:
 	rm -rf client/
 	rm -rf schema/
 	rm -rf swagger/
+	rm -rf api-doc/
+	rm -rf tool/
 
 lint:
 	golint
