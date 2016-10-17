@@ -22,10 +22,9 @@ class Bottles extends Component{
 				<table className='table table-bordered table-striped'>
 					<thead>
 						<tr>
-							<th>href</th>
 							<th>id</th>
+							<th>account_id</th>
 							<th>name</th>
-							<th>rating</th>
 							<th>varietal</th>
 							<th>vineyard</th>
 							<th>vintage</th>

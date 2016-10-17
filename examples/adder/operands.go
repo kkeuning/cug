@@ -4,8 +4,8 @@ package main
 import (
 	"strconv"
 
-	"github.com/kkeuning/goa-react/examples/adder/app"
 	"github.com/goadesign/goa"
+	"github.com/kkeuning/goa-react/examples/adder/app"
 )
 
 // OperandsController implements the operands resource.

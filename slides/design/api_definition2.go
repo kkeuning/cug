@@ -23,7 +23,7 @@ var _ = API("cellar", func() {
 		Description("goa guide")
 		URL("http://goa.design/getting-started.html")
 	})
-//START OMIT
+	//START OMIT
 	Host("cellar.goa.design")
 	Scheme("http")
 	BasePath("/cellar")
@@ -32,6 +32,7 @@ var _ = API("cellar", func() {
 		MaxAge(600)
 		Credentials()
 	})
+	//END OMIT
 	BasicAuthSecurity("admin_pass", func() {
 		Description(`Basic authentication method, for global admin authentication.
 Here are very secret credentials:
@@ -49,4 +50,5 @@ Here are very secret credentials:
 		})
 	})
 })
+
 //END OMIT

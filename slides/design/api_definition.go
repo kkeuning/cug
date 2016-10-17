@@ -24,10 +24,10 @@ var _ = API("cellar", func() {
 		Description("goa guide")
 		URL("http://goa.design/getting-started.html")
 	})
-//END OMIT
 	Host("cellar.goa.design")
 	Scheme("http")
 	BasePath("/cellar")
+	//END OMIT
 
 	Origin("http://swagger.goa.design", func() {
 		Methods("GET", "POST", "PUT", "PATCH", "DELETE")
