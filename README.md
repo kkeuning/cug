@@ -2,7 +2,13 @@ Slides for Chicago Ultimate Go Meetup, October 18:
 
 http://go-talks.appspot.com/github.com/kkeuning/cug/slides/gatt.slide
 
-# Introduction to Goa for Microservices and SPAs
+# Go APIs: Just Generate Everything With Goa
+
+aka, "generate all the things!"
+
+![alt tag](https://github.com/kkeuning/cug/blob/master/slides/gatt.jpg)
+
+An Introduction to Goa for Microservices and SPAs
 ```
 go get github.com/kkeuning/cug
 ```
@@ -36,8 +42,10 @@ git checkout tags/v1.0.0
 go get github.com/goadesign/examples
 go get github.com/goadesign/goa-cellar
 go get github.com/goadesign/gorma-cellar
+go get github.com/kkeuning/cug
+go get github.com/kkeuning/reduxa
 ```
-### Add my forks as remotes
+### Add my forks as remotes to get my additions to the standard examples
 My fork of goa-cellar adds support for cors
 ```
 cd $GOPATH/src/github.com/goadesign/goa-cellar
@@ -52,12 +60,12 @@ git remote add kkeuning https://github.com/kkeuning/gorma-cellar
 git remote update
 git checkout -t kkeuning/chicago
 ```
-If you have docker installed, build the container.
+### Build the container gorma-cellar container.
 ```
 docker build -t gorma-cellar .
 ```
 
-### Fire up the react example, and connect it to goa-cellar
+### Fire up the React example, and connect it to goa-cellar
 ```
 cd examples/react-goa-cellar
 docker-compose build
