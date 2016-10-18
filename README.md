@@ -10,7 +10,7 @@ aka, "generate all the things!"
 
 An Introduction to Goa for Microservices and SPAs
 
-# Get this repo first for the slides and examples:
+## Get this repo first for the slides and examples:
 ```
 go get github.com/kkeuning/cug
 ```
@@ -49,18 +49,22 @@ go install
 go get github.com/goadesign/examples
 go get github.com/goadesign/goa-cellar
 go get github.com/goadesign/gorma-cellar
-go get github.com/kkeuning/cug
 go get github.com/kkeuning/reduxa
 ```
+Don't forget to get this repo also if you have not already:
+```
+go get github.com/kkeuning/cug
+
+```
 ### Add my forks as remotes to get my additions to the standard examples
-My fork of goa-cellar adds support for cors
+My fork of goa-cellar adds support for cors:
 ```
 cd $GOPATH/src/github.com/goadesign/goa-cellar
 git remote add kkeuning https://github.com/kkeuning/goa-cellar
 git remote update
 git checkout -t kkeuning/cors
 ```
-My fork of gorma cellar adds several extras for the demo...
+My fork of gorma cellar adds several extras for the demo:
 ```
 cd $GOPATH/src/github.com/goadesign/gorma-cellar
 git remote add kkeuning https://github.com/kkeuning/gorma-cellar
