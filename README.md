@@ -89,10 +89,8 @@ cd $GOPATH/src/github.com/gorma-cellar/seeder
 go build
 bash seeder.sh
 ```
-Point your browser to 0.0.0.0/2015
-Click Bottles to connect to the api.  
-I suggest doing this with you browser developer tools open recording network activity.
-Also, the Chrome Redux devtools are nice and enabled for the example.
+Point your browser to 0.0.0.0/2015 and click Bottles to connect to the api.  
+I suggest doing this with you browser developer tools open recording network activity to get a feel for the interactions with the cellar api.  Also, the Chrome Redux devtools are nice and enabled for the example.
 
 
 ### Extras:
