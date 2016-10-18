@@ -71,7 +71,7 @@ git remote add kkeuning https://github.com/kkeuning/gorma-cellar
 git remote update
 git checkout -t kkeuning/chicago
 ```
-### Build the container gorma-cellar container:
+### Build the gorma-cellar container:
 ```
 docker build -t gorma-cellar .
 ```
