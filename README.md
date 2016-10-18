@@ -28,14 +28,15 @@ $GOPATH/bin/present
 
 ### First, install goa and gorma
 ```
-go get github.com/goadesign/goa
-go get github.com/goadesign/goa/goagen
+go get -u github.com/goadesign/goa/...
 go get github.com/goadesign/gorma
 ```
 Check out the v1.0.0 tag of goa for best compatibility with my examples.
 ```
 cd $GOPATH/src/github.com/goadesign/goa
 git checkout tags/v1.0.0
+cd goagen
+go install
 ```
 
 ### Next, install the goa examples
@@ -68,7 +69,7 @@ docker build -t gorma-cellar .
 
 ### Fire up the React example, and connect it to goa-cellar
 ```
-cd examples/react-goa-cellar
+cd $GOPATH/src/github.com/kkeuning/cug/examples/react-goa-cellar
 docker-compose build
 docker-compose up
 ```
