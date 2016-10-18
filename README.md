@@ -9,17 +9,22 @@ aka, "generate all the things!"
 ![alt tag](https://github.com/kkeuning/cug/blob/master/slides/gatt.jpg)
 
 An Introduction to Goa for Microservices and SPAs
+
+# Get this repo first for the slides and examples:
 ```
 go get github.com/kkeuning/cug
 ```
 
-## Slides
+## To present the slides locally:
 ```
 Install present
 go get golang.org/x/net
 go get golang.org/x/tools
 go install golang.org/x/tools/cmd/present
+cd $GOPATH/src/github.com/kkeuning/cug/slides
 ```
+Point your browser to localhost:3999 to view the slides.
+
 ```
 cd $GOPATH/src/github.com/kkeuning/cug
 $GOPATH/bin/present
