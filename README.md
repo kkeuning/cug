@@ -22,13 +22,10 @@ go get golang.org/x/net
 go get golang.org/x/tools
 go install golang.org/x/tools/cmd/present
 cd $GOPATH/src/github.com/kkeuning/cug/slides
-```
-Point your browser to localhost:3999 to view the slides.
-
-```
-cd $GOPATH/src/github.com/kkeuning/cug
 $GOPATH/bin/present
 ```
+Now point your browser to localhost:3999 to view the slides.
+
 ## Examples
 
 ### First, install goa and gorma:
