@@ -76,7 +76,7 @@ git checkout -t kkeuning/chicago
 docker build -t gorma-cellar .
 ```
 
-### Fire up the React example, and connect it to goa-cellar:
+### Fire up the React example, and connect it to gorma-cellar (or goa-cellar if you prefer, docker-compose will use gorma-cellar):
 ```
 cd $GOPATH/src/github.com/kkeuning/cug/examples/react-goa-cellar
 docker-compose build
