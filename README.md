@@ -31,7 +31,7 @@ $GOPATH/bin/present
 ```
 ## Examples
 
-### First, install goa and gorma
+### First, install goa and gorma:
 ```
 go get -u github.com/goadesign/goa/...
 go get github.com/goadesign/gorma
@@ -44,7 +44,7 @@ cd goagen
 go install
 ```
 
-### Next, install the goa examples
+### Next, install the goa examples:
 ```
 go get github.com/goadesign/examples
 go get github.com/goadesign/goa-cellar
@@ -54,9 +54,9 @@ go get github.com/kkeuning/reduxa
 Don't forget to get this repo also if you have not already:
 ```
 go get github.com/kkeuning/cug
-
 ```
-### Add my forks as remotes to get my additions to the standard examples
+
+### Add my forks as remotes to get my additions to the standard examples:
 My fork of goa-cellar adds support for cors:
 ```
 cd $GOPATH/src/github.com/goadesign/goa-cellar
@@ -71,19 +71,19 @@ git remote add kkeuning https://github.com/kkeuning/gorma-cellar
 git remote update
 git checkout -t kkeuning/chicago
 ```
-### Build the container gorma-cellar container.
+### Build the container gorma-cellar container:
 ```
 docker build -t gorma-cellar .
 ```
 
-### Fire up the React example, and connect it to goa-cellar
+### Fire up the React example, and connect it to goa-cellar:
 ```
 cd $GOPATH/src/github.com/kkeuning/cug/examples/react-goa-cellar
 docker-compose build
 docker-compose up
 ```
 
-### Seed your database
+### Seed your database:
 ```
 cd $GOPATH/src/github.com/gorma-cellar/seeder
 go build
@@ -95,7 +95,7 @@ I suggest doing this with you browser developer tools open recording network act
 Also, the Chrome Redux devtools are nice and enabled for the example.
 
 
-### Extras
+### Extras:
 Swagger UI:
 https://github.com/swagger-api/swagger-ui
 
