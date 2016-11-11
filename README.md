@@ -82,7 +82,7 @@ docker-compose up
 
 ### Seed your database:
 ```
-cd $GOPATH/src/github.com/gorma-cellar/seeder
+cd $GOPATH/src/github.com/goadesign/gorma-cellar/seeder
 go build
 bash seeder.sh
 ```
