@@ -1,9 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import Bottle from './Bottle';
 
 @connect(state => ({data: state.bottles.data}))
-class MBottles extends Component{
+class Bottles extends Component{
 	constructor(props){
 		super(props);
 	}
@@ -16,6 +15,7 @@ class MBottles extends Component{
 	render() {
 
 		const {data} = this.props;
+		console.log('inside mobile view');
 
 		return (
 			<div className='container'>
@@ -62,4 +62,4 @@ class MBottles extends Component{
 	}
 }
 
-export default MBottles;
+export default Bottles;
