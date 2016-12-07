@@ -6,7 +6,7 @@ import {Router, Route} from 'react-router';
 import {browserHistory} from 'react-router';
 import configureStore from './store';
 import App from './containers/App';
-import Bottles from './components/Bottles';
+import Bottles from './containers/Bottles';
 import Error from './containers/Error';
 import Home from './components/Home';
 import {listBottles} from './reduxa/cellarActionCreators';
