@@ -2,6 +2,9 @@ Slides for Chicago Ultimate Go Meetup, October 18:
 
 http://go-talks.appspot.com/github.com/kkeuning/cug/slides/gatt.slide
 
+Video of the meetup:
+https://vimeo.com/196251649
+
 # Go APIs: Just Generate Everything With Goa
 
 aka, "generate all the things!"
